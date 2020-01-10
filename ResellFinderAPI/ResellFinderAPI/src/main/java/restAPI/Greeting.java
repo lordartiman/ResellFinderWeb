@@ -1,10 +1,11 @@
-package hello;
+package restAPI;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import searchelements.Area;
 import searchelements.Category;
+import searchelements.Item;
 import searchelements.Search;
 import searchelements.State;
 import searchelements.SubArea;
