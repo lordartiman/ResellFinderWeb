@@ -1,6 +1,14 @@
 package hello;
 
 import java.util.ArrayList;
+import java.util.Scanner;
+
+import searchelements.Area;
+import searchelements.Category;
+import searchelements.Search;
+import searchelements.State;
+import searchelements.SubArea;
+import searchelements.Topic;
 
 public class Greeting {
 
@@ -8,6 +16,7 @@ public class Greeting {
 	private final String content;
 	private final String testing;
 	private Item[] i;
+	private Search search;
 
 	public Greeting(long id, String content) {
 		this.id = id;
@@ -22,6 +31,7 @@ public class Greeting {
 			e.printStackTrace();
 		}
 		testing = "hi";
+		search = newSearch();
 	}
 
 	public long getId() {
@@ -38,5 +48,54 @@ public class Greeting {
 	
 	public Item[] getI() {
 		return i;
+	}
+	
+	public Search getSearch() {
+		return search;
+	}
+	
+	public static Search newSearch() {
+		Scanner scan = new Scanner(System.in);
+    	Search search = new Search();
+
+    	System.out.println("Choose from a list of States:");
+        for (String state: search.getStateMap().keySet()) {
+        	System.out.print(state + "\t");
+        }
+        String stateInput = scan.nextLine();
+        search = new State(stateInput);
+
+        if (search.hasArea()) {
+        	System.out.println("Choose from a list of Areas:");
+        	for (String area: search.getAreaMap().keySet()) {
+        		System.out.print(area + "\t");
+        	}
+        	String areaInput = scan.nextLine();
+        	search = new Area(search, areaInput);
+        }
+
+        if (search.hasSubArea()) {
+        	System.out.println("Choose from a list of Sub Areas:");
+        	for (String subArea: search.getSubAreaMap().keySet()) {
+        		System.out.print(subArea + "\t");
+        	}
+        	String subAreaInput = scan.nextLine();
+        	search = new SubArea(search, subAreaInput);
+        }
+
+        System.out.println("Choose from a list of Topics:");
+        for (String topic: search.getTopicMap().keySet()) {
+        	System.out.print(topic + "\t");
+        }
+       	String topicInput = scan.nextLine();
+       	search = new Topic(search, topicInput);
+
+       	System.out.println("Choose from a list of Categories:");
+       	for (String category: search.getCategoryMap().keySet()) {
+        	System.out.print(category + "\t");
+        }
+       	String categoryInput = scan.nextLine();
+       	search = new Category(search, categoryInput);
+       	return search;
 	}
 }
