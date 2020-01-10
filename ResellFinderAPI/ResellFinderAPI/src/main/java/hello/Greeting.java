@@ -10,6 +10,11 @@ import searchelements.State;
 import searchelements.SubArea;
 import searchelements.Topic;
 
+/**
+ * Just a testing class for responses
+ * @author arti
+ *
+ */
 public class Greeting {
 
 	private final long id;
@@ -32,6 +37,14 @@ public class Greeting {
 		}
 		testing = "hi";
 		search = newSearch();
+	}
+	
+	public Greeting(long id) {
+		this.id = id;
+		this.search = new Search();
+		search.getStateMap().keySet();
+		this.testing = "";
+		this.content = "";
 	}
 
 	public long getId() {
