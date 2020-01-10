@@ -1,9 +1,10 @@
-package hello;
+package restAPI;
 
 import org.springframework.web.bind.annotation.RestController;
 
 import searchelements.Area;
 import searchelements.Category;
+import searchelements.Item;
 import searchelements.Options;
 import searchelements.Search;
 import searchelements.SearchQuery;
@@ -12,6 +13,7 @@ import searchelements.SubArea;
 import searchelements.Topic;
 import searchelements.WebScraper;
 
+import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,6 +30,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class ResponseController {
 	private static final String template = "Hello, %s!";
 	private final AtomicLong counter = new AtomicLong();
+	private HashMap<String,Boolean> voptions = new HashMap<String,Boolean>();
+	private Options searchoptions = new Options(null, null, new float[] {0,10000});
 	
 	@RequestMapping("/greeting")
 	public Greeting greeting(@RequestParam(value="state", defaultValue="null") String name) {
@@ -59,5 +63,18 @@ public class ResponseController {
 	@RequestMapping("/search/{state}")
 	public Response statesearch(@PathVariable("state") String state) {
 		return new Response(counter.incrementAndGet(), state);
+	}
+	
+	@RequestMapping("/options")
+	public Options getOptions() {
+		this.voptions.put("hasImages", false);
+		this.voptions.put("multipleImagesOnly",false);
+		this.voptions.put("postedToday",false);
+		this.voptions.put("bundleDuplicates",false);
+		this.voptions.put("hideAllDuplicates",false);
+		this.voptions.put("hasMakeModelOnly",false);
+		float[] range = new float[] {0,100000000};
+		this.searchoptions = new Options(this.voptions,null,range);
+		return this.searchoptions;
 	}
 }

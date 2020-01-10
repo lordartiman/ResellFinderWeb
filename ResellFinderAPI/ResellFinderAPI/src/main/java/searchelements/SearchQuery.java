@@ -12,7 +12,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import hello.Item;
 import searchelements.WebScraper;
 
 import org.jsoup.nodes.Attributes;
@@ -58,15 +57,10 @@ public class SearchQuery {
 			if (checkBoxes != null) {
 				hasImage = checkBoxes.get("hasImages");
 				multipleImagesOnly = checkBoxes.get("multipleImagesOnly");
-				originalImagesOnly = checkBoxes.get("originalImagesOnly");
 				postedToday = checkBoxes.get("postedToday");
-				searchTitlesOnly = checkBoxes.get("searchTitlesOnly");
 				bundleDuplicates = checkBoxes.get("bundleDuplicates");
 				hideAllDuplicates = checkBoxes.get("hideAllDuplicates");
 				hasMakeModelOnly = checkBoxes.get("hasMakeModelOnly");
-				hasPhoneOnly = checkBoxes.get("hasPhoneOnly");
-				cryptoAccepted = checkBoxes.get("cryptoAccepted");
-				deliveryAvailable = checkBoxes.get("deliveryAvailable");
 			}
 
 			if (types != null) {
