@@ -77,4 +77,6 @@ public class ResponseController {
 		this.searchoptions = new Options(this.voptions,null,range);
 		return this.searchoptions;
 	}
+	
+	
 }
