@@ -55,8 +55,8 @@ public class ResponseController {
 		search = new Topic(search, topic);
 		search = new Category(search, category);
 		WebScraper scraper = new WebScraper(search);
-		Options options = new Options(null, null, new float[] {0,10000});
-		SearchQuery query = new SearchQuery(options, search);
+		//Options options = new Options(null, null, new float[] {0,10000});
+		SearchQuery query = new SearchQuery(this.getOptions(), search);
 		return query.updateSearch().toArray(Item[]::new);
 	}
 	
@@ -72,7 +72,7 @@ public class ResponseController {
 		this.voptions.put("postedToday",false);
 		this.voptions.put("bundleDuplicates",false);
 		this.voptions.put("hideAllDuplicates",false);
-		this.voptions.put("hasMakeModelOnly",false);
+		this.voptions.put("hasMakeModelOnly",true);
 		float[] range = new float[] {0,100000000};
 		this.searchoptions = new Options(this.voptions,null,range);
 		return this.searchoptions;
