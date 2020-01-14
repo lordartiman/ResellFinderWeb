@@ -59,7 +59,9 @@ public class EbayPrice {
 		this.searchurlstring = finalurl;
 		System.out.println(finalurl);
 	}
-	
+	public void setFinalURL(String s) {
+		this.searchurlstring = s;
+	}
 	public Double calcPrice() throws IOException {
 		this.website = Jsoup.connect(this.searchurlstring).get();
 		System.out.println("Search URL: " + this.searchurlstring);
@@ -80,13 +82,14 @@ public class EbayPrice {
 		for (BigDecimal value : pricevalues) {
 			sum += value.doubleValue();
 		}
-		return sum / pricevalues.size();//.divide(new BigDecimal(pricevalues.size()));
+		return sum / pricevalues.size();
 	}
 	
 	public static void main(String[] args) {
 		try {
 			Item i = new Item("https://washingtondc.craigslist.org/nva/sop/d/alexandria-amd-firepro-v5800-1gb/7053613969.html");
 			EbayPrice ebaydefault = new EbayPrice(i,searchprofile.MAKEMODEL,conditionvalues.USED);
+			ebaydefault.setFinalURL("https://www.ebay.com/sch/i.html?_from=R40&_nkw=intel+core+i7-7700&_sacat=0&LH_ItemCondition=3000&Processor%2520Model=Intel%2520Core%2520i7%252D7700&_dcat=164&LH_Sold=1&LH_Complete=1&rt=nc&LH_Auction=1");
 			System.out.println(ebaydefault.calcPrice().doubleValue());
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block

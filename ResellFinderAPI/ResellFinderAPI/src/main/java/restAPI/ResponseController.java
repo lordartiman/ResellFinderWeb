@@ -45,6 +45,7 @@ public class ResponseController {
 								@RequestParam(value="subarea", defaultValue="null") String subarea,
 								@RequestParam(value="topic", defaultValue="null") String topic,
 								@RequestParam(value="category", defaultValue="null") String category){
+		//TODO handle incomplete searches
 		Search search = new State(state);
 		if (search.hasArea()) {
 			search = new Area(search, area);
