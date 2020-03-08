@@ -13,6 +13,7 @@ import searchelements.SubArea;
 import searchelements.Topic;
 import searchelements.WebScraper;
 
+import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -44,8 +45,19 @@ public class ResponseController {
 								@RequestParam(value="area",  defaultValue="null") String area,
 								@RequestParam(value="subarea", defaultValue="null") String subarea,
 								@RequestParam(value="topic", defaultValue="null") String topic,
-								@RequestParam(value="category", defaultValue="null") String category){
+								@RequestParam(value="category", defaultValue="null") String category,
+								@RequestParam(value="time", defaultValue="null") String time){
 		//TODO handle incomplete searches
+		/*
+		 * If the search has no state, return a list of available states as individual items
+		 * If the search has a state and no area/subarea, return a list of available areas; 
+		 * 	if there are no areas available, return a list of subareas available if any
+		 * If there is no topic, return a list of topics
+		 * If there is no category, return a list of available categories
+		 * Else, create a new search with given parameters and return all results posted in
+		 * between the present time and parameter issued time, by default, posted today
+		 * 
+		 */
 		Search search = new State(state);
 		if (search.hasArea()) {
 			search = new Area(search, area);
@@ -66,6 +78,12 @@ public class ResponseController {
 		return new Response(counter.incrementAndGet(), state);
 	}
 	
+	/*
+	 * Implement functionality to create a custom search with provided option parameters
+	 * that will return a filtered search with advanced search logics that are optional
+	 * somehow make this so that it is appended to the /search URI
+	 * 
+	 */
 	@RequestMapping("/options")
 	public Options getOptions() {
 		this.voptions.put("hasImages", false);
