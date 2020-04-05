@@ -23,23 +23,50 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * This is the rest controller class, responsible for binding methods to URI in the Rest API
+ * REST API Response controller class, class that is responsible for accepting requests from the web application,
+ * processing input parameters from the user and passing the parameters to the search methods in order to return
+ * a JSON response containing all the listings that match the search with additional information to be displayed 
+ * to the user by the front-end
  * @author Arti Shala
  *
  */
 @RestController
 public class ResponseController {
+	//field used for testing only
 	private static final String template = "Hello, %s!";
+	
+	//used to count and give ID's to individual requests and responses
 	private final AtomicLong counter = new AtomicLong();
+	
+	//Options holder field used to hold values while a new Options object is constructed
 	private HashMap<String,Boolean> voptions = new HashMap<String,Boolean>();
+	
+	//A default searchoptions that can be set by the user and used for subsequent requests
 	private Options searchoptions = new Options(null, null, new float[] {0,10000});
 	
+	/**
+	 * Method only used for testing, returns a greeting based on the name input
+	 * @param name
+	 * @return
+	 */
 	@RequestMapping("/greeting")
 	public Greeting greeting(@RequestParam(value="state", defaultValue="null") String name) {
 		return new Greeting(counter.incrementAndGet(),
 							String.format(template, name));
 	}
 	
+	/**
+	 * Accepts basic search configuration parameters as GET request parameters
+	 * and returns a JSON list of all the items returned by the SearchQuery method 
+	 * using the default Search Options
+	 * @param state the state that the user wishes to search, within the United States only
+	 * @param area the "area" that the user wishes to search (used for craigslist scraping)
+	 * @param subarea the "sub-area" that the user wishes to search (used for craigslist scraping)
+	 * @param topic the "topic" that the user wishes to search (used for craigslist scraping)
+	 * @param category the category of items that the user wants to search 
+	 * @param time the oldest acceptable search result
+	 * @return a JSON list of Items and their properties
+	 */
 	@RequestMapping("/search")
 	public Item[] blanksearch(@RequestParam(value="state", defaultValue="null") String state,
 								@RequestParam(value="area",  defaultValue="null") String area,
@@ -47,17 +74,7 @@ public class ResponseController {
 								@RequestParam(value="topic", defaultValue="null") String topic,
 								@RequestParam(value="category", defaultValue="null") String category,
 								@RequestParam(value="time", defaultValue="null") String time){
-		//TODO handle incomplete searches
-		/*
-		 * If the search has no state, return a list of available states as individual items
-		 * If the search has a state and no area/subarea, return a list of available areas; 
-		 * 	if there are no areas available, return a list of subareas available if any
-		 * If there is no topic, return a list of topics
-		 * If there is no category, return a list of available categories
-		 * Else, create a new search with given parameters and return all results posted in
-		 * between the present time and parameter issued time, by default, posted today
-		 * 
-		 */
+		
 		Search search = new State(state);
 		if (search.hasArea()) {
 			search = new Area(search, area);
@@ -68,8 +85,9 @@ public class ResponseController {
 		search = new Topic(search, topic);
 		search = new Category(search, category);
 		WebScraper scraper = new WebScraper(search);
-		//Options options = new Options(null, null, new float[] {0,10000});
 		SearchQuery query = new SearchQuery(this.getOptions(), search);
+		
+		//Return the items found by the SearchQuery as an array, based on the options provided
 		return query.updateSearch().toArray(Item[]::new);
 	}
 	
@@ -77,6 +95,7 @@ public class ResponseController {
 	public Response statesearch(@PathVariable("state") String state) {
 		return new Response(counter.incrementAndGet(), state);
 	}
+	
 	
 	/*
 	 * Implement functionality to create a custom search with provided option parameters

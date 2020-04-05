@@ -299,6 +299,14 @@ public class Item {
 	public String getMake() {
 		return make;
 	}
+	
+	/**
+	 * @return A dollar estimate on the potential reselling profit to be made on e-bay from this item
+	 * only if the item has a make and model
+	 */
+	public String getEbayMargins() {
+		return "";
+	}
 
 	/**
 	 * @param make the make to set
