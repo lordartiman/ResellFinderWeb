@@ -1,5 +1,8 @@
 package searchelements;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Class containing ebay search methods for price comparison and deal finding
  * Class methods interact directly with the ebay API
@@ -8,6 +11,7 @@ package searchelements;
  */
 public class EbaySearch {
 	private String endpoint = "https://svcs.ebay.com/services/search/FindingService/v1";
+	private String ebaykey = "ArtiShal-ResellFi-PRD-4196b8010-e158c03b";
 	
 	
 	
@@ -29,8 +33,21 @@ public class EbaySearch {
 		 * make the request and parse the 5 prices from the request
 		 * return the average of those 5 prices
 		 */
+		
 		double[] returnval = {0,0};
 		return returnval;
+	}
+	
+	private Map<String,String> defaultParam(String key){
+		Map<String,String> defaultParamMap = new HashMap<>();
+		defaultParamMap.put("OPERATION-NAME", "");
+		defaultParamMap.put("SERVICE-VERSION", "1.0.0");
+		defaultParamMap.put("SECURITY-APPNAME", "ArtiShal-ResellFi-PRD-4196b8010-e158c03b");
+		defaultParamMap.put("XML", "");
+		defaultParamMap.put("REST-PAYLOAD", "");
+		defaultParamMap.put("keywords", "");
+		return defaultParamMap;
+		
 	}
 	
 	
