@@ -305,7 +305,16 @@ public class Item {
 	 * only if the item has a make and model
 	 */
 	public String getEbayMargins() {
-		return "";
+		if (!this.getMake().isBlank() &&  !this.getModel().isBlank()) {
+			//Get the average selling price of this item on E-bay
+			//Take 10% from the selling price (for selling fees), then $10 for shipping and another 2%
+			//return the difference between the above number and the listing price
+			return "Sufficient information";
+		} else {
+			//Item does not have make, does not have model, or does not have either
+			return "not enough item information";
+		}
+			
 	}
 
 	/**
