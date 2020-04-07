@@ -1,5 +1,10 @@
 package searchelements;
 
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -51,5 +56,28 @@ public class EbaySearch {
 	}
 	
 	
-	
+	/**
+	 * testing purposes
+	 */
+	public static void main(String[] args) {
+		HttpClient client = HttpClient.newBuilder()
+				.version(HttpClient.Version.HTTP_2)
+				.build();
+		
+		HttpRequest request = HttpRequest.newBuilder()
+				.GET()
+				.uri(URI.create("https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findCompletedItems&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=ArtiShal-ResellFi-PRD-4196b8010-e158c03b&RESPONSE-DATA-FORMAT=XML&REST-PAYLOAD&keywords=Lenovo&sortOrder=EndTimeSoonest&itemFilter.name=SoldItemsOnly&itemFilter.value=True&paginationInput.entriesPerPage=5"))
+				.build();
+		try {
+			HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+			System.out.println(response.body());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 }
