@@ -7,6 +7,8 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 /**
  * Class containing ebay search methods for price comparison and deal finding
@@ -15,8 +17,8 @@ import java.util.Map;
  *
  */
 public class EbaySearch {
-	private String endpoint = "https://svcs.ebay.com/services/search/FindingService/v1";
-	private String ebaykey = "ArtiShal-ResellFi-PRD-4196b8010-e158c03b";
+	private static String endpoint = "https://svcs.ebay.com/services/search/FindingService/v1";
+	private static String ebaykey = "ArtiShal-ResellFi-PRD-4196b8010-e158c03b";
 	
 	
 	
@@ -43,11 +45,16 @@ public class EbaySearch {
 		return returnval;
 	}
 	
-	private Map<String,String> defaultParam(String key){
+	/**
+	 * Returns a default map of parameters that can be modified 
+	 * @param key the eBay API key used to authenticate
+	 * @return a Map<Key,Value> containing all the basic parameters and empty parameters to be customized
+	 */
+	private static Map<String,String> defaultParam(String key){
 		Map<String,String> defaultParamMap = new HashMap<>();
 		defaultParamMap.put("OPERATION-NAME", "");
 		defaultParamMap.put("SERVICE-VERSION", "1.0.0");
-		defaultParamMap.put("SECURITY-APPNAME", "ArtiShal-ResellFi-PRD-4196b8010-e158c03b");
+		defaultParamMap.put("SECURITY-APPNAME", key);
 		defaultParamMap.put("XML", "");
 		defaultParamMap.put("REST-PAYLOAD", "");
 		defaultParamMap.put("keywords", "");
@@ -55,11 +62,25 @@ public class EbaySearch {
 		
 	}
 	
+	/**
+	 * A method to build a GET request URI in String format from a map of the parameters and their values
+	 * @param endpoint the base of the URI, without '?' 
+	 * @param params a Map<Key,Value> of parameters for the URI request
+	 * @return
+	 */
+	private static String uriBuilder(String endpoint, Map<String,String> params) {
+		String base = endpoint + "?";
+		for (Entry<String,String> entry : params.entrySet()) 
+			base = base + entry.getKey() + "=" + entry.getValue() + "&";
+		base = base.substring(0,base.length()-1);
+		return base;
+	}
 	
 	/**
 	 * testing purposes
 	 */
 	public static void main(String[] args) {
+		
 		HttpClient client = HttpClient.newBuilder()
 				.version(HttpClient.Version.HTTP_2)
 				.build();
@@ -78,6 +99,7 @@ public class EbaySearch {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		
 	}
 }
