@@ -23,8 +23,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * REST API Response controller class, class that is responsible for accepting requests from the web application,
- * processing input parameters from the user and passing the parameters to the search methods in order to return
+ * REST API Response controller class, class that is responsible for accepting HTTP requests from a client,
+ * processing input parameters from the client and passing the parameters to the search methods in order to return
  * a JSON response containing all the listings that match the search with additional information to be displayed 
  * to the user by the front-end
  * @author Arti Shala
@@ -54,11 +54,12 @@ public class ResponseController {
 		return new Greeting(counter.incrementAndGet(),
 							String.format(template, name));
 	}
+
 	
 	/**
-	 * Accepts basic search configuration parameters as GET request parameters
-	 * and returns a JSON list of all the items returned by the SearchQuery method 
-	 * using the default Search Options
+	 * Returns a JSON list of Craigslist Item objects to the client, using GET request parameters
+	 * to narrow the search results, all the parameters are required, if a parameter is missing, 
+	 * the server will respond letting the client know it was an incomplete search
 	 * @param state the state that the user wishes to search, within the United States only
 	 * @param area the "area" that the user wishes to search (used for craigslist scraping)
 	 * @param subarea the "sub-area" that the user wishes to search (used for craigslist scraping)
@@ -91,8 +92,15 @@ public class ResponseController {
 		return query.updateSearch().toArray(Item[]::new);
 	}
 	
+	/**
+	 * Not implemented yet, supposed to return a list of Craigslist states to assist the user
+	 * in building a complete search
+	 * @param state
+	 * @return
+	 */
 	@RequestMapping("/search/{state}")
 	public Response statesearch(@PathVariable("state") String state) {
+		//TODO implement the functionality to allow a user to build a searchrequest with this tool
 		return new Response(counter.incrementAndGet(), state);
 	}
 	

@@ -10,6 +10,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import org.slf4j.LoggerFactory;
+
 /**
  * Class containing ebay search methods for price comparison and deal finding
  * Class methods interact directly with the ebay API
@@ -20,6 +22,9 @@ public class EbaySearch {
 	private static String endpoint = "https://svcs.ebay.com/services/search/FindingService/v1";
 	private static String ebaykey = "ArtiShal-ResellFi-PRD-4196b8010-e158c03b";
 	
+	HttpClient client = HttpClient.newBuilder()
+			.version(HttpClient.Version.HTTP_2)
+			.build();
 	
 	
 	/**
@@ -32,7 +37,7 @@ public class EbaySearch {
 	 * @param item the Item object of the item beings searched for on Ebay
 	 * @return a double array containing the profit margin and popularity score
 	 */
-	public double[] getAverageSellingPrice(Item item) {
+	public float[] getAverageSellingPrice(Item item) {
 		//TODO Implement eBay API call as described in comments below
 		/*
 		 * Take standard parameters and build the request URL
@@ -41,7 +46,7 @@ public class EbaySearch {
 		 * return the average of those 5 prices
 		 */
 		
-		double[] returnval = {0,0};
+		float[] returnval = {0,0};
 		return returnval;
 	}
 	
@@ -76,14 +81,13 @@ public class EbaySearch {
 		return base;
 	}
 	
+	
 	/**
 	 * testing purposes
 	 */
 	public static void main(String[] args) {
 		
-		HttpClient client = HttpClient.newBuilder()
-				.version(HttpClient.Version.HTTP_2)
-				.build();
+		
 		
 		HttpRequest request = HttpRequest.newBuilder()
 				.GET()

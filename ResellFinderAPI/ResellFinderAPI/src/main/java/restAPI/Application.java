@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * Main class, responsible for starting the Spring boot web app
+ * Nothing interesting here
  * @author Arti Shala
  *
  */
