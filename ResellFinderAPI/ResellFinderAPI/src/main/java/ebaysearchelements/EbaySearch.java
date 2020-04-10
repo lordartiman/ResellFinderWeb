@@ -1,5 +1,6 @@
-package searchelements;
+package ebaysearchelements;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -12,6 +13,10 @@ import java.util.Set;
 
 import org.slf4j.LoggerFactory;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import craigslistsearchelements.Item;
+
 /**
  * Class containing ebay search methods for price comparison and deal finding
  * Class methods interact directly with the ebay API
@@ -22,9 +27,7 @@ public class EbaySearch {
 	private static String endpoint = "https://svcs.ebay.com/services/search/FindingService/v1";
 	private static String ebaykey = "ArtiShal-ResellFi-PRD-4196b8010-e158c03b";
 	
-	HttpClient client = HttpClient.newBuilder()
-			.version(HttpClient.Version.HTTP_2)
-			.build();
+	
 	
 	
 	/**
@@ -87,7 +90,10 @@ public class EbaySearch {
 	 */
 	public static void main(String[] args) {
 		
-		
+		/*
+		HttpClient client = HttpClient.newBuilder()
+				.version(HttpClient.Version.HTTP_2)
+				.build();
 		
 		HttpRequest request = HttpRequest.newBuilder()
 				.GET()
@@ -101,6 +107,20 @@ public class EbaySearch {
 			e.printStackTrace();
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		*/
+		
+		ObjectMapper mapper = new ObjectMapper();
+		
+		try {
+			//JSON file to java object
+			EbayResponse response = mapper.readValue(new File("/Users/arti/Documents/dev/Resell Finder/ResellFinderGit/ResellFinderWeb/ResellFinderAPI/ResellFinderAPI/bin/main/ebaysearchelements/Ebayresponse.json"), EbayResponse.class);
+			
+			String prettyprint = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(response);
+			
+			System.out.println(response.getFindCompletedItemsResponse().get(0).getSearchResult().get(0).getItem().get(0));
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		

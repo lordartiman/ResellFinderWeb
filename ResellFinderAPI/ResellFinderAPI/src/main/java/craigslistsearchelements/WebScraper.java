@@ -1,10 +1,10 @@
-package searchelements;
+package craigslistsearchelements;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import searchelements.Search;
+import craigslistsearchelements.Search;
 
 import org.jsoup.nodes.Attributes;
 

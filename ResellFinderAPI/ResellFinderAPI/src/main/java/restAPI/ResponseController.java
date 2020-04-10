@@ -2,16 +2,16 @@ package restAPI;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import searchelements.Area;
-import searchelements.Category;
-import searchelements.Item;
-import searchelements.Options;
-import searchelements.Search;
-import searchelements.SearchQuery;
-import searchelements.State;
-import searchelements.SubArea;
-import searchelements.Topic;
-import searchelements.WebScraper;
+import craigslistsearchelements.Area;
+import craigslistsearchelements.Category;
+import craigslistsearchelements.Item;
+import craigslistsearchelements.Options;
+import craigslistsearchelements.Search;
+import craigslistsearchelements.SearchQuery;
+import craigslistsearchelements.State;
+import craigslistsearchelements.SubArea;
+import craigslistsearchelements.Topic;
+import craigslistsearchelements.WebScraper;
 
 import java.time.LocalTime;
 import java.util.HashMap;

@@ -3,13 +3,13 @@ package restAPI;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import searchelements.Area;
-import searchelements.Category;
-import searchelements.Item;
-import searchelements.Search;
-import searchelements.State;
-import searchelements.SubArea;
-import searchelements.Topic;
+import craigslistsearchelements.Area;
+import craigslistsearchelements.Category;
+import craigslistsearchelements.Item;
+import craigslistsearchelements.Search;
+import craigslistsearchelements.State;
+import craigslistsearchelements.SubArea;
+import craigslistsearchelements.Topic;
 
 /**
  * Just a testing class for responses

@@ -1,6 +1,6 @@
 package restAPI;
 
-import searchelements.Search;
+import craigslistsearchelements.Search;
 
 /**
  * Testing class

@@ -1,4 +1,4 @@
-package searchelements;
+package craigslistsearchelements;
 /**
  * Used to reoresent a category when building a search
  * @author Ryan Lee
