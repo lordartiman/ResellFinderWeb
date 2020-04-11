@@ -27,6 +27,18 @@ public class EbaySearch {
 	private static String endpoint = "https://svcs.ebay.com/services/search/FindingService/v1";
 	private static String ebaykey = "ArtiShal-ResellFi-PRD-4196b8010-e158c03b";
 	
+	private static String getEndpoint() {
+		return endpoint;
+	}
+	
+	private static String getKey() {
+		return ebaykey;
+	}
+	
+	public EbaySearch(String endpoint, String ebaykey) {
+		this.endpoint = endpoint;
+		this.ebaykey = ebaykey;
+	}
 	
 	
 	
@@ -45,9 +57,23 @@ public class EbaySearch {
 		/*
 		 * Take standard parameters and build the request URL
 		 * take the keyword and add it to the request URL
-		 * make the request and parse the 5 prices from the request
-		 * return the average of those 5 prices
+		 * make the request and parse the 10 prices from the request
+		 * return the average of those 10 prices
 		 */
+		
+		//build the parameters of the search request
+		Map<String,String> parameters = defaultParam();
+		parameters.put("OPERATION-NAME", "findCompletedItems");
+		parameters.put("keywords", "iPhone");
+		parameters.put("sortOrder", "EndTimeSoonest");
+		parameters.put("itemFilter.name","SoldItemsOnly");
+		parameters.put("itemFilter.value", "True");
+		parameters.put("paginationInput.entriesPerPage","10");
+		
+		//create the http request and parse the json response into the ebayresponse object
+		EbayResponse ebayresponse = ebayrequest(uriBuilder(parameters));
+		
+		
 		
 		float[] returnval = {0,0};
 		return returnval;
@@ -58,12 +84,12 @@ public class EbaySearch {
 	 * @param key the eBay API key used to authenticate
 	 * @return a Map<Key,Value> containing all the basic parameters and empty parameters to be customized
 	 */
-	private static Map<String,String> defaultParam(String key){
+	private static Map<String,String> defaultParam(){
 		Map<String,String> defaultParamMap = new HashMap<>();
 		defaultParamMap.put("OPERATION-NAME", "");
 		defaultParamMap.put("SERVICE-VERSION", "1.0.0");
-		defaultParamMap.put("SECURITY-APPNAME", key);
-		defaultParamMap.put("XML", "");
+		defaultParamMap.put("SECURITY-APPNAME", getKey());
+		defaultParamMap.put("RESPONSE-DATA-FORMAT", "JSON");
 		defaultParamMap.put("REST-PAYLOAD", "");
 		defaultParamMap.put("keywords", "");
 		return defaultParamMap;
@@ -76,13 +102,51 @@ public class EbaySearch {
 	 * @param params a Map<Key,Value> of parameters for the URI request
 	 * @return
 	 */
-	private static String uriBuilder(String endpoint, Map<String,String> params) {
-		String base = endpoint + "?";
+	private static String uriBuilder(Map<String,String> params) {
+		String base = getEndpoint() + "?";
 		for (Entry<String,String> entry : params.entrySet()) 
 			base = base + entry.getKey() + "=" + entry.getValue() + "&";
 		base = base.substring(0,base.length()-1);
 		return base;
 	}
+	
+	/**
+	 * Create a new EbayResponse navigable object from a built URI using the uriBuilder method
+	 * @param uri a URI constructed using the uriBuilder method
+	 * @return an EbayResponse object, which is essentially a parsed object based on the returned JSON
+	 */
+	private static EbayResponse ebayrequest(String uri) {
+		
+		HttpClient client = HttpClient.newBuilder()
+				.version(HttpClient.Version.HTTP_2)
+				.build();
+		
+		HttpRequest request = HttpRequest.newBuilder()
+				.GET()
+				.uri(URI.create(uri))
+				.build();
+		
+		ObjectMapper mapper = new ObjectMapper();
+		
+		try {
+			
+			HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+			
+			EbayResponse ebayresponse = mapper.readValue(response.body(), EbayResponse.class);
+			
+			//System.out.println(ebayresponse.getFindCompletedItemsResponse().get(0).getSearchResult().get(0).getItem().get(0).getSellingStatus().get(0).getCurrentPrice().get(0).getValue());
+			return ebayresponse;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	
 	
 	/**
@@ -90,39 +154,16 @@ public class EbaySearch {
 	 */
 	public static void main(String[] args) {
 		
-		/*
-		HttpClient client = HttpClient.newBuilder()
-				.version(HttpClient.Version.HTTP_2)
-				.build();
+		Map<String,String> parameters = defaultParam();
+		parameters.put("OPERATION-NAME", "findCompletedItems");
+		parameters.put("keywords", "iPhone");
+		parameters.put("sortOrder", "EndTimeSoonest");
+		parameters.put("itemFilter.name","SoldItemsOnly");
+		parameters.put("itemFilter.value", "True");
+		parameters.put("paginationInput.entriesPerPage","5");
 		
-		HttpRequest request = HttpRequest.newBuilder()
-				.GET()
-				.uri(URI.create("https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findCompletedItems&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=ArtiShal-ResellFi-PRD-4196b8010-e158c03b&RESPONSE-DATA-FORMAT=XML&REST-PAYLOAD&keywords=Lenovo&sortOrder=EndTimeSoonest&itemFilter.name=SoldItemsOnly&itemFilter.value=True&paginationInput.entriesPerPage=5"))
-				.build();
-		try {
-			HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-			System.out.println(response.body());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		*/
+		EbayResponse responseobject = ebayrequest(uriBuilder(parameters));
 		
-		ObjectMapper mapper = new ObjectMapper();
-		
-		try {
-			//JSON file to java object
-			EbayResponse response = mapper.readValue(new File("/Users/arti/Documents/dev/Resell Finder/ResellFinderGit/ResellFinderWeb/ResellFinderAPI/ResellFinderAPI/bin/main/ebaysearchelements/Ebayresponse.json"), EbayResponse.class);
-			
-			String prettyprint = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(response);
-			
-			System.out.println(response.getFindCompletedItemsResponse().get(0).getSearchResult().get(0).getItem().get(0));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 		
 		
 	}
