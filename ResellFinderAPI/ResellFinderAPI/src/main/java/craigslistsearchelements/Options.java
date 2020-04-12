@@ -1,4 +1,4 @@
-package searchelements;
+package craigslistsearchelements;
 import java.util.HashMap;
 /**
  * used to configure the SearchQuery based on input from the User in the GUI

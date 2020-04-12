@@ -1,0 +1,682 @@
+{
+    "findCompletedItemsResponse": [
+        {
+            "ack": [
+                "Success"
+            ],
+            "version": [
+                "1.13.0"
+            ],
+            "timestamp": [
+                "2020-04-10T17:44:46.813Z"
+            ],
+            "searchResult": [
+                {
+                    "@count": "5",
+                    "item": [
+                        {
+                            "itemId": [
+                                "324121104673"
+                            ],
+                            "title": [
+                                "GENUINE LENOVO THINKPAD PA-1650-71 65W AC ADAPTER  ADLX65NLT2A 45N0319 45N0320"
+                            ],
+                            "globalId": [
+                                "EBAY-US"
+                            ],
+                            "primaryCategory": [
+                                {
+                                    "categoryId": [
+                                        "31510"
+                                    ],
+                                    "categoryName": [
+                                        "Laptop Power Adapters/Chargers"
+                                    ]
+                                }
+                            ],
+                            "galleryURL": [
+                                "https://thumbs2.ebaystatic.com/m/muKUVUo_VH4wUvMajUktZvA/140.jpg"
+                            ],
+                            "viewItemURL": [
+                                "https://www.ebay.com/itm/GENUINE-LENOVO-THINKPAD-PA-1650-71-65W-AC-ADAPTER-ADLX65NLT2A-45N0319-45N0320-/324121104673"
+                            ],
+                            "paymentMethod": [
+                                "PayPal"
+                            ],
+                            "autoPay": [
+                                "false"
+                            ],
+                            "postalCode": [
+                                "371**"
+                            ],
+                            "location": [
+                                "Murfreesboro,TN,USA"
+                            ],
+                            "country": [
+                                "US"
+                            ],
+                            "shippingInfo": [
+                                {
+                                    "shippingServiceCost": [
+                                        {
+                                            "@currencyId": "USD",
+                                            "__value__": "5.0"
+                                        }
+                                    ],
+                                    "shippingType": [
+                                        "Flat"
+                                    ],
+                                    "shipToLocations": [
+                                        "Worldwide"
+                                    ],
+                                    "expeditedShipping": [
+                                        "false"
+                                    ],
+                                    "oneDayShippingAvailable": [
+                                        "false"
+                                    ],
+                                    "handlingTime": [
+                                        "1"
+                                    ]
+                                }
+                            ],
+                            "sellingStatus": [
+                                {
+                                    "currentPrice": [
+                                        {
+                                            "@currencyId": "USD",
+                                            "__value__": "1.26"
+                                        }
+                                    ],
+                                    "convertedCurrentPrice": [
+                                        {
+                                            "@currencyId": "USD",
+                                            "__value__": "1.26"
+                                        }
+                                    ],
+                                    "bidCount": [
+                                        "6"
+                                    ],
+                                    "sellingState": [
+                                        "EndedWithSales"
+                                    ]
+                                }
+                            ],
+                            "listingInfo": [
+                                {
+                                    "bestOfferEnabled": [
+                                        "false"
+                                    ],
+                                    "buyItNowAvailable": [
+                                        "false"
+                                    ],
+                                    "startTime": [
+                                        "2020-03-31T15:59:24.000Z"
+                                    ],
+                                    "endTime": [
+                                        "2020-04-10T15:59:24.000Z"
+                                    ],
+                                    "listingType": [
+                                        "Auction"
+                                    ],
+                                    "gift": [
+                                        "false"
+                                    ],
+                                    "watchCount": [
+                                        "2"
+                                    ]
+                                }
+                            ],
+                            "returnsAccepted": [
+                                "false"
+                            ],
+                            "condition": [
+                                {
+                                    "conditionId": [
+                                        "3000"
+                                    ],
+                                    "conditionDisplayName": [
+                                        "Used"
+                                    ]
+                                }
+                            ],
+                            "isMultiVariationListing": [
+                                "false"
+                            ],
+                            "topRatedListing": [
+                                "false"
+                            ]
+                        },
+                        {
+                            "itemId": [
+                                "333464070201"
+                            ],
+                            "title": [
+                                "AC Adapter Charger for IBM Lenovo ThinkPad T60 Z60 Power Supply 20V 65W 3.25A"
+                            ],
+                            "globalId": [
+                                "EBAY-US"
+                            ],
+                            "primaryCategory": [
+                                {
+                                    "categoryId": [
+                                        "31510"
+                                    ],
+                                    "categoryName": [
+                                        "Laptop Power Adapters/Chargers"
+                                    ]
+                                }
+                            ],
+                            "galleryURL": [
+                                "https://thumbs1.ebaystatic.com/pict/04040_0.jpg"
+                            ],
+                            "viewItemURL": [
+                                "https://www.ebay.com/itm/AC-Adapter-Charger-IBM-Lenovo-ThinkPad-T60-Z60-Power-Supply-20V-65W-3-25A-/333464070201?var=0"
+                            ],
+                            "paymentMethod": [
+                                "PayPal"
+                            ],
+                            "autoPay": [
+                                "false"
+                            ],
+                            "location": [
+                                "China"
+                            ],
+                            "country": [
+                                "CN"
+                            ],
+                            "shippingInfo": [
+                                {
+                                    "shippingServiceCost": [
+                                        {
+                                            "@currencyId": "USD",
+                                            "__value__": "0.99"
+                                        }
+                                    ],
+                                    "shippingType": [
+                                        "Flat"
+                                    ],
+                                    "shipToLocations": [
+                                        "Worldwide"
+                                    ],
+                                    "expeditedShipping": [
+                                        "false"
+                                    ],
+                                    "oneDayShippingAvailable": [
+                                        "false"
+                                    ],
+                                    "handlingTime": [
+                                        "5"
+                                    ]
+                                }
+                            ],
+                            "sellingStatus": [
+                                {
+                                    "currentPrice": [
+                                        {
+                                            "@currencyId": "USD",
+                                            "__value__": "15.19"
+                                        }
+                                    ],
+                                    "convertedCurrentPrice": [
+                                        {
+                                            "@currencyId": "USD",
+                                            "__value__": "15.19"
+                                        }
+                                    ],
+                                    "sellingState": [
+                                        "EndedWithSales"
+                                    ]
+                                }
+                            ],
+                            "listingInfo": [
+                                {
+                                    "bestOfferEnabled": [
+                                        "false"
+                                    ],
+                                    "buyItNowAvailable": [
+                                        "false"
+                                    ],
+                                    "startTime": [
+                                        "2020-01-03T04:41:59.000Z"
+                                    ],
+                                    "endTime": [
+                                        "2020-04-10T15:08:48.000Z"
+                                    ],
+                                    "listingType": [
+                                        "FixedPrice"
+                                    ],
+                                    "gift": [
+                                        "false"
+                                    ],
+                                    "watchCount": [
+                                        "1"
+                                    ]
+                                }
+                            ],
+                            "returnsAccepted": [
+                                "true"
+                            ],
+                            "condition": [
+                                {
+                                    "conditionId": [
+                                        "1000"
+                                    ],
+                                    "conditionDisplayName": [
+                                        "New"
+                                    ]
+                                }
+                            ],
+                            "isMultiVariationListing": [
+                                "true"
+                            ],
+                            "topRatedListing": [
+                                "false"
+                            ]
+                        },
+                        {
+                            "itemId": [
+                                "333464070201"
+                            ],
+                            "title": [
+                                "AC Adapter Charger for IBM Lenovo ThinkPad T60 Z60 Power Supply 20V 65W 3.25A"
+                            ],
+                            "globalId": [
+                                "EBAY-US"
+                            ],
+                            "primaryCategory": [
+                                {
+                                    "categoryId": [
+                                        "31510"
+                                    ],
+                                    "categoryName": [
+                                        "Laptop Power Adapters/Chargers"
+                                    ]
+                                }
+                            ],
+                            "galleryURL": [
+                                "https://thumbs2.ebaystatic.com/pict/333464070201404000000002_1.jpg"
+                            ],
+                            "viewItemURL": [
+                                "https://www.ebay.com/itm/AC-Adapter-Charger-IBM-Lenovo-ThinkPad-T60-Z60-Power-Supply-20V-65W-3-25A-/333464070201?var=542549128878"
+                            ],
+                            "paymentMethod": [
+                                "PayPal"
+                            ],
+                            "autoPay": [
+                                "false"
+                            ],
+                            "location": [
+                                "China"
+                            ],
+                            "country": [
+                                "CN"
+                            ],
+                            "shippingInfo": [
+                                {
+                                    "shippingServiceCost": [
+                                        {
+                                            "@currencyId": "USD",
+                                            "__value__": "0.99"
+                                        }
+                                    ],
+                                    "shippingType": [
+                                        "Flat"
+                                    ],
+                                    "shipToLocations": [
+                                        "Worldwide"
+                                    ],
+                                    "expeditedShipping": [
+                                        "false"
+                                    ],
+                                    "oneDayShippingAvailable": [
+                                        "false"
+                                    ],
+                                    "handlingTime": [
+                                        "5"
+                                    ]
+                                }
+                            ],
+                            "sellingStatus": [
+                                {
+                                    "currentPrice": [
+                                        {
+                                            "@currencyId": "USD",
+                                            "__value__": "15.19"
+                                        }
+                                    ],
+                                    "convertedCurrentPrice": [
+                                        {
+                                            "@currencyId": "USD",
+                                            "__value__": "15.19"
+                                        }
+                                    ],
+                                    "sellingState": [
+                                        "EndedWithSales"
+                                    ]
+                                }
+                            ],
+                            "listingInfo": [
+                                {
+                                    "bestOfferEnabled": [
+                                        "false"
+                                    ],
+                                    "buyItNowAvailable": [
+                                        "false"
+                                    ],
+                                    "startTime": [
+                                        "2020-01-03T04:41:59.000Z"
+                                    ],
+                                    "endTime": [
+                                        "2020-04-10T15:08:48.000Z"
+                                    ],
+                                    "listingType": [
+                                        "FixedPrice"
+                                    ],
+                                    "gift": [
+                                        "false"
+                                    ],
+                                    "watchCount": [
+                                        "1"
+                                    ]
+                                }
+                            ],
+                            "returnsAccepted": [
+                                "true"
+                            ],
+                            "condition": [
+                                {
+                                    "conditionId": [
+                                        "1000"
+                                    ],
+                                    "conditionDisplayName": [
+                                        "New"
+                                    ]
+                                }
+                            ],
+                            "isMultiVariationListing": [
+                                "true"
+                            ],
+                            "topRatedListing": [
+                                "false"
+                            ]
+                        },
+                        {
+                            "itemId": [
+                                "174124144373"
+                            ],
+                            "title": [
+                                "AC Adapter for IBM Thinkpad T60 X60 Lenovo 3000 Power Supply Battery Charger 65w"
+                            ],
+                            "globalId": [
+                                "EBAY-US"
+                            ],
+                            "primaryCategory": [
+                                {
+                                    "categoryId": [
+                                        "31510"
+                                    ],
+                                    "categoryName": [
+                                        "Laptop Power Adapters/Chargers"
+                                    ]
+                                }
+                            ],
+                            "galleryURL": [
+                                "https://thumbs2.ebaystatic.com/m/mOTsggAszZOPFAlluJyutWA/140.jpg"
+                            ],
+                            "viewItemURL": [
+                                "https://www.ebay.com/itm/AC-Adapter-IBM-Thinkpad-T60-X60-Lenovo-3000-Power-Supply-Battery-Charger-65w-/174124144373"
+                            ],
+                            "paymentMethod": [
+                                "PayPal"
+                            ],
+                            "autoPay": [
+                                "false"
+                            ],
+                            "postalCode": [
+                                "917**"
+                            ],
+                            "location": [
+                                "South El Monte,CA,USA"
+                            ],
+                            "country": [
+                                "US"
+                            ],
+                            "shippingInfo": [
+                                {
+                                    "shippingServiceCost": [
+                                        {
+                                            "@currencyId": "USD",
+                                            "__value__": "0.0"
+                                        }
+                                    ],
+                                    "shippingType": [
+                                        "Free"
+                                    ],
+                                    "shipToLocations": [
+                                        "Worldwide"
+                                    ],
+                                    "expeditedShipping": [
+                                        "false"
+                                    ],
+                                    "oneDayShippingAvailable": [
+                                        "false"
+                                    ],
+                                    "handlingTime": [
+                                        "1"
+                                    ]
+                                }
+                            ],
+                            "sellingStatus": [
+                                {
+                                    "currentPrice": [
+                                        {
+                                            "@currencyId": "USD",
+                                            "__value__": "6.41"
+                                        }
+                                    ],
+                                    "convertedCurrentPrice": [
+                                        {
+                                            "@currencyId": "USD",
+                                            "__value__": "6.41"
+                                        }
+                                    ],
+                                    "sellingState": [
+                                        "EndedWithSales"
+                                    ]
+                                }
+                            ],
+                            "listingInfo": [
+                                {
+                                    "bestOfferEnabled": [
+                                        "false"
+                                    ],
+                                    "buyItNowAvailable": [
+                                        "false"
+                                    ],
+                                    "startTime": [
+                                        "2019-12-13T04:56:29.000Z"
+                                    ],
+                                    "endTime": [
+                                        "2020-04-10T09:57:04.000Z"
+                                    ],
+                                    "listingType": [
+                                        "FixedPrice"
+                                    ],
+                                    "gift": [
+                                        "false"
+                                    ],
+                                    "watchCount": [
+                                        "6"
+                                    ]
+                                }
+                            ],
+                            "returnsAccepted": [
+                                "true"
+                            ],
+                            "condition": [
+                                {
+                                    "conditionId": [
+                                        "1000"
+                                    ],
+                                    "conditionDisplayName": [
+                                        "New"
+                                    ]
+                                }
+                            ],
+                            "isMultiVariationListing": [
+                                "false"
+                            ],
+                            "topRatedListing": [
+                                "true"
+                            ]
+                        },
+                        {
+                            "itemId": [
+                                "184080073745"
+                            ],
+                            "title": [
+                                "65W AC Adapter for IBM Lenovo ThinkPad T60p Z60m Z60t X60s R60e Battery Charger"
+                            ],
+                            "globalId": [
+                                "EBAY-US"
+                            ],
+                            "primaryCategory": [
+                                {
+                                    "categoryId": [
+                                        "31510"
+                                    ],
+                                    "categoryName": [
+                                        "Laptop Power Adapters/Chargers"
+                                    ]
+                                }
+                            ],
+                            "galleryURL": [
+                                "https://thumbs2.ebaystatic.com/m/mOTsggAszZOPFAlluJyutWA/140.jpg"
+                            ],
+                            "viewItemURL": [
+                                "https://www.ebay.com/itm/65W-AC-Adapter-IBM-Lenovo-ThinkPad-T60p-Z60m-Z60t-X60s-R60e-Battery-Charger-/184080073745"
+                            ],
+                            "paymentMethod": [
+                                "PayPal"
+                            ],
+                            "autoPay": [
+                                "false"
+                            ],
+                            "postalCode": [
+                                "917**"
+                            ],
+                            "location": [
+                                "South El Monte,CA,USA"
+                            ],
+                            "country": [
+                                "US"
+                            ],
+                            "shippingInfo": [
+                                {
+                                    "shippingServiceCost": [
+                                        {
+                                            "@currencyId": "USD",
+                                            "__value__": "0.0"
+                                        }
+                                    ],
+                                    "shippingType": [
+                                        "Free"
+                                    ],
+                                    "shipToLocations": [
+                                        "Worldwide"
+                                    ],
+                                    "expeditedShipping": [
+                                        "false"
+                                    ],
+                                    "oneDayShippingAvailable": [
+                                        "false"
+                                    ],
+                                    "handlingTime": [
+                                        "1"
+                                    ]
+                                }
+                            ],
+                            "sellingStatus": [
+                                {
+                                    "currentPrice": [
+                                        {
+                                            "@currencyId": "USD",
+                                            "__value__": "6.65"
+                                        }
+                                    ],
+                                    "convertedCurrentPrice": [
+                                        {
+                                            "@currencyId": "USD",
+                                            "__value__": "6.65"
+                                        }
+                                    ],
+                                    "sellingState": [
+                                        "EndedWithSales"
+                                    ]
+                                }
+                            ],
+                            "listingInfo": [
+                                {
+                                    "bestOfferEnabled": [
+                                        "false"
+                                    ],
+                                    "buyItNowAvailable": [
+                                        "false"
+                                    ],
+                                    "startTime": [
+                                        "2019-12-13T04:57:05.000Z"
+                                    ],
+                                    "endTime": [
+                                        "2020-04-10T09:57:04.000Z"
+                                    ],
+                                    "listingType": [
+                                        "FixedPrice"
+                                    ],
+                                    "gift": [
+                                        "false"
+                                    ]
+                                }
+                            ],
+                            "returnsAccepted": [
+                                "true"
+                            ],
+                            "condition": [
+                                {
+                                    "conditionId": [
+                                        "1000"
+                                    ],
+                                    "conditionDisplayName": [
+                                        "New"
+                                    ]
+                                }
+                            ],
+                            "isMultiVariationListing": [
+                                "false"
+                            ],
+                            "topRatedListing": [
+                                "true"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "paginationOutput": [
+                {
+                    "pageNumber": [
+                        "1"
+                    ],
+                    "entriesPerPage": [
+                        "5"
+                    ],
+                    "totalPages": [
+                        "62"
+                    ],
+                    "totalEntries": [
+                        "309"
+                    ]
+                }
+            ]
+        }
+    ]
+}

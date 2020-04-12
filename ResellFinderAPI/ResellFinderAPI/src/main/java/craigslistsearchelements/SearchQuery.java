@@ -1,4 +1,4 @@
-package searchelements;
+package craigslistsearchelements;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -12,7 +12,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import searchelements.WebScraper;
+import craigslistsearchelements.WebScraper;
 
 import org.jsoup.nodes.Attributes;
 
