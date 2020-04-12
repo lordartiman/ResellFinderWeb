@@ -7,8 +7,10 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Scanner;
 import java.util.Set;
 
 import org.slf4j.LoggerFactory;
@@ -25,7 +27,7 @@ import craigslistsearchelements.Item;
  */
 public class EbaySearch {
 	private static String endpoint = "https://svcs.ebay.com/services/search/FindingService/v1";
-	private static String ebaykey = "ArtiShal-ResellFi-PRD-4196b8010-e158c03b";
+	private static String ebaykey = "";
 	
 	private static String getEndpoint() {
 		return endpoint;
@@ -33,6 +35,10 @@ public class EbaySearch {
 	
 	private static String getKey() {
 		return ebaykey;
+	}
+	
+	private static void setKey(String s) {
+		ebaykey = s;
 	}
 	
 	public EbaySearch(String endpoint, String ebaykey) {
@@ -52,19 +58,17 @@ public class EbaySearch {
 	 * @param item the Item object of the item beings searched for on Ebay
 	 * @return a double array containing the profit margin and popularity score
 	 */
-	public float[] getAverageSellingPrice(Item item) {
+	public static float[] getAverageSellingPrice(/*craigslistsearchelements.Item item*/) {
 		//TODO Implement eBay API call as described in comments below
-		/*
-		 * Take standard parameters and build the request URL
-		 * take the keyword and add it to the request URL
-		 * make the request and parse the 10 prices from the request
-		 * return the average of those 10 prices
-		 */
+		//Get the Craigslist item in question and perform these actions
+			//TODO Category extraction estimation algoithm, need to add a map of craigslist categories to ebay category codes
+			//TODO Condition extraction algorithm, match condition to ebay condition map if specified, otherwise use keyword searching
+			//TODO keyword extraction algorithm, create a keyword string either from make model or a select portion of the title
 		
 		//build the parameters of the search request
 		Map<String,String> parameters = defaultParam();
 		parameters.put("OPERATION-NAME", "findCompletedItems");
-		parameters.put("keywords", "iPhone");
+		parameters.put("keywords", "iPhone,11,pro");
 		parameters.put("sortOrder", "EndTimeSoonest");
 		parameters.put("itemFilter.name","SoldItemsOnly");
 		parameters.put("itemFilter.value", "True");
@@ -73,6 +77,16 @@ public class EbaySearch {
 		//create the http request and parse the json response into the ebayresponse object
 		EbayResponse ebayresponse = ebayrequest(uriBuilder(parameters));
 		
+		//get the list of items as a list 
+		List<ebaysearchelements.Item> items = ebayresponse.getFindCompletedItemsResponse().get(0).getSearchResult().get(0).getItem();
+		
+		//
+		for (ebaysearchelements.Item i : items) {
+			System.out.println("Item Name: " + i.getTitle().get(0).toString());
+			System.out.println("Listing end time: " + i.getListingInfo().get(0).getEndTime().get(0).toString());
+			System.out.println("Selling Status: " + i.getSellingStatus().get(0).getSellingState().get(0).toString());
+			System.out.println("Selling Price: $" + i.getSellingStatus().get(0).getCurrentPrice().get(0).getValue());
+		}
 		
 		
 		float[] returnval = {0,0};
@@ -153,16 +167,11 @@ public class EbaySearch {
 	 * testing purposes
 	 */
 	public static void main(String[] args) {
-		
-		Map<String,String> parameters = defaultParam();
-		parameters.put("OPERATION-NAME", "findCompletedItems");
-		parameters.put("keywords", "iPhone");
-		parameters.put("sortOrder", "EndTimeSoonest");
-		parameters.put("itemFilter.name","SoldItemsOnly");
-		parameters.put("itemFilter.value", "True");
-		parameters.put("paginationInput.entriesPerPage","5");
-		
-		EbayResponse responseobject = ebayrequest(uriBuilder(parameters));
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter your production Ebay API key: ");
+		String keyinput = scan.nextLine();
+		setKey(keyinput);
+		getAverageSellingPrice();
 		
 		
 		
