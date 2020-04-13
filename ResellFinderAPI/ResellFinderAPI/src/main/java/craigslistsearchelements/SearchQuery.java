@@ -29,7 +29,7 @@ public class SearchQuery {
 	private Search search;
 	private String sellerType, makeSearch, modelSearch, conditionSearch; //Define sellerType and conditionSearch enum for dropdown list;
 	private Boolean hasImage , multipleImagesOnly , originalImagesOnly, postedToday , searchTitlesOnly, bundleDuplicates ,
-	hideAllDuplicates, hasMakeModelOnly, hasPhoneOnly, cryptoAccepted, deliveryAvailable;
+	hideAllDuplicates, hasMakeModelOnly, hasPhoneOnly, cryptoAccepted, deliveryAvailable , hasConditionOnly;
 	private int milerange, zipcode, descriptionLengthMin, descriptionLengthMax;
 	private float minPrice, maxPrice;
 	private LocalTime startDate,endDate;
@@ -61,6 +61,7 @@ public class SearchQuery {
 				bundleDuplicates = checkBoxes.get("bundleDuplicates");
 				hideAllDuplicates = checkBoxes.get("hideAllDuplicates");
 				hasMakeModelOnly = checkBoxes.get("hasMakeModelOnly");
+				hasConditionOnly = checkBoxes.get("hasConditionOnly");
 			}
 
 			if (types != null) {
@@ -105,6 +106,8 @@ public class SearchQuery {
 								Item item = new Item(s);
 								try {
 									if ((this.hasImage == true) && item.isHasImages() == false )
+										item.setNull(true);
+									if ((this.hasConditionOnly == true) && item.getCondition().equals(""))
 										item.setNull(true);
 									if ((this.multipleImagesOnly == true) && item.isHasMultipleImages() == false)
 										item.setNull(true);

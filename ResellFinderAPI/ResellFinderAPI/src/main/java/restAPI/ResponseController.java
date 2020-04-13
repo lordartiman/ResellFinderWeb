@@ -118,7 +118,8 @@ public class ResponseController {
 		this.voptions.put("postedToday",false);
 		this.voptions.put("bundleDuplicates",false);
 		this.voptions.put("hideAllDuplicates",false);
-		this.voptions.put("hasMakeModelOnly",true);
+		this.voptions.put("hasMakeModelOnly",false);
+		this.voptions.put("hasConditionOnly", true);
 		float[] range = new float[] {0,100000000};
 		this.searchoptions = new Options(this.voptions,null,range);
 		return this.searchoptions;

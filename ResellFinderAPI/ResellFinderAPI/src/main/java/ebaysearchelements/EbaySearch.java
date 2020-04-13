@@ -28,6 +28,8 @@ import craigslistsearchelements.Item;
 public class EbaySearch {
 	private static String endpoint = "https://svcs.ebay.com/services/search/FindingService/v1";
 	private static String ebaykey = "";
+	//TODO Create the map that maps conditions from Craigslist to Ebay Condition codes
+	//public HashMap<String,String> craigslistconditionmap = 
 	
 	private static String getEndpoint() {
 		return endpoint;
@@ -58,11 +60,14 @@ public class EbaySearch {
 	 * @param item the Item object of the item beings searched for on Ebay
 	 * @return a double array containing the profit margin and popularity score
 	 */
-	public static float[] getAverageSellingPrice(/*craigslistsearchelements.Item item*/) {
+	public static float[] getAverageSellingPrice(craigslistsearchelements.Item item) {
 		//TODO Implement eBay API call as described in comments below
 		//Get the Craigslist item in question and perform these actions
 			//TODO Category extraction estimation algoithm, need to add a map of craigslist categories to ebay category codes
 			//TODO Condition extraction algorithm, match condition to ebay condition map if specified, otherwise use keyword searching
+		
+		
+		
 			//TODO keyword extraction algorithm, create a keyword string either from make model or a select portion of the title
 		
 		//build the parameters of the search request
@@ -70,9 +75,17 @@ public class EbaySearch {
 		parameters.put("OPERATION-NAME", "findCompletedItems");
 		parameters.put("keywords", "iPhone,11,pro");
 		parameters.put("sortOrder", "EndTimeSoonest");
-		parameters.put("itemFilter.name","SoldItemsOnly");
-		parameters.put("itemFilter.value", "True");
+		parameters.put("itemFilter(0).name","SoldItemsOnly");
+		parameters.put("itemFilter(0).value", "True");
 		parameters.put("paginationInput.entriesPerPage","10");
+		
+		//Item condition parameter mapping
+		if (!item.getCondition().equals("")) {
+			parameters.put("itemFilter(1).name", "Condition");
+			//TODO parameters.put("itemFilter(1).value", craigslistconditionmap.get(item.condition));
+		}
+		
+		
 		
 		//create the http request and parse the json response into the ebayresponse object
 		EbayResponse ebayresponse = ebayrequest(uriBuilder(parameters));
@@ -171,7 +184,7 @@ public class EbaySearch {
 		System.out.println("Enter your production Ebay API key: ");
 		String keyinput = scan.nextLine();
 		setKey(keyinput);
-		getAverageSellingPrice();
+		getAverageSellingPrice(null);
 		
 		
 		
